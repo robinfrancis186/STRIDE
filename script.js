@@ -131,7 +131,9 @@ if (newsletterForm) {
 
 // Animation on scroll
 window.addEventListener('DOMContentLoaded', () => {
-    const animateElements = document.querySelectorAll('.card, .impact-item, .about-image, .goals-image');
+    const animateElements = document.querySelectorAll(
+        '.card, .impact-item, .about-image, .goals-image, .vision-image, .feature, .advantage, .stat, .example-item, .ecosystem-item, .partnership-item, .timeline-item'
+    );
     
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -144,5 +146,20 @@ window.addEventListener('DOMContentLoaded', () => {
     
     animateElements.forEach(element => {
         observer.observe(element);
+    });
+    
+    // Add staggered animation to timeline items
+    const timelineItems = document.querySelectorAll('.timeline-item');
+    timelineItems.forEach((item, index) => {
+        setTimeout(() => {
+            item.style.opacity = '0';
+            item.style.transform = 'translateY(20px)';
+            item.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            
+            setTimeout(() => {
+                item.style.opacity = '1';
+                item.style.transform = 'translateY(0)';
+            }, index * 200);
+        }, 500);
     });
 }); 
