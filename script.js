@@ -132,7 +132,7 @@ if (newsletterForm) {
 // Animation on scroll
 window.addEventListener('DOMContentLoaded', () => {
     const animateElements = document.querySelectorAll(
-        '.card, .impact-item, .about-image, .goals-image, .vision-image, .feature, .advantage, .stat, .example-item, .ecosystem-item, .partnership-item, .timeline-item'
+        '.card, .impact-item, .about-image, .goals-image, .vision-image, .feature, .advantage, .stat, .example-item, .ecosystem-item, .partnership-item, .timeline-item, .phase, .stakeholder, .award, .deliverable-item, .requirement-item, .resource-item, .criterion'
     );
     
     const observer = new IntersectionObserver((entries) => {
@@ -151,6 +151,36 @@ window.addEventListener('DOMContentLoaded', () => {
     // Add staggered animation to timeline items
     const timelineItems = document.querySelectorAll('.timeline-item');
     timelineItems.forEach((item, index) => {
+        setTimeout(() => {
+            item.style.opacity = '0';
+            item.style.transform = 'translateY(20px)';
+            item.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            
+            setTimeout(() => {
+                item.style.opacity = '1';
+                item.style.transform = 'translateY(0)';
+            }, index * 200);
+        }, 500);
+    });
+    
+    // Add staggered animation to stakeholders
+    const stakeholders = document.querySelectorAll('.stakeholder');
+    stakeholders.forEach((item, index) => {
+        setTimeout(() => {
+            item.style.opacity = '0';
+            item.style.transform = 'translateY(20px)';
+            item.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            
+            setTimeout(() => {
+                item.style.opacity = '1';
+                item.style.transform = 'translateY(0)';
+            }, index * 100);
+        }, 500);
+    });
+    
+    // Add staggered animation to awards
+    const awards = document.querySelectorAll('.award');
+    awards.forEach((item, index) => {
         setTimeout(() => {
             item.style.opacity = '0';
             item.style.transform = 'translateY(20px)';
